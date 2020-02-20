@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue入门</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 挂载点，模板，实例 -->
+    <!-- 模板在挂载点下面 -->
+    <div id="root">
+        <!-- v-on:=可以简化成@ -->
+        <h1 v-on:click="handleClick">Hello {{msg}}<br/></h1>
+        <div v-text='contentText' v-on:click="handleClick"></div>
+        <div v-html='contentHtml'></div>
+        <!-- 属性绑定 -->
+        <!-- v-bind:可以简化成: -->
+        <div v-bind:title='title' @click="handleClick">click</div>
+        <!-- 双向数据绑定 -->
+        <input v-model='content'/>
+        <div>{{content}}</div>
+
+    </div>
+
+    <script>
+        new Vue({
+            el: "#root",
+            //模板会替换挂载点下的所有内容
+            /* template:'<h1>hello {{msg}}</h1>', */
+            data: {
+                msg: "World",
+                contentText:'<h1>this is contentText</h1>',
+                contentHtml:'<h1>this is contentHtml</h1>',
+                title:'点击click',
+                content:'这里是内容'
+            },
+            methods:{
+                handleClick:function(){
+                    //alert(123)
+                    this.msg="123"
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
