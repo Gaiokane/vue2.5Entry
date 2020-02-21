@@ -21,6 +21,13 @@
         <!-- 双向数据绑定 -->
         <input v-model='content'/>
         <div>{{content}}</div>
+        <a>————————————————————————<br/></a>
+        姓：<input v-model='firstName'/>
+        名：<input v-model='lastName'/>
+        <!-- <div>{{firstName}}{{lastName}}</div> -->
+        <div>{{fullName}}</div>
+        <div>{{count}}</div>
+
 
     </div>
 
@@ -34,12 +41,31 @@
                 contentText:'<h1>this is contentText</h1>',
                 contentHtml:'<h1>this is contentHtml</h1>',
                 title:'点击click',
-                content:'这里是内容'
+                content:'这里是内容',
+                firstName:'',
+                lastName:'',
+                count:0
+            },
+            computed:{
+                fullName:function(){
+                    return this.firstName+' '+this.lastName
+                }
             },
             methods:{
                 handleClick:function(){
                     //alert(123)
                     this.msg="123"
+                }
+            },
+            watch:{
+                /* firstName:function(){
+                    this.count++
+                },
+                lastName:function(){
+                    this.count++
+                } */
+                fullName:function(){
+                    this.count++
                 }
             }
         })
